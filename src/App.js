@@ -7,7 +7,7 @@ import penguin from './assets/penguin.svg'
 import rupicola from './assets/rupicola.svg'
 import Card from './Card'
 import './App.css';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /**
  * 
@@ -34,24 +34,41 @@ function shuffle(array) {
 }
 
 const initialState = [
-  { id: 1, src: moray },
-  { id: 2, src: moray },
-  { id: 3, src: cathedral },
-  { id: 4, src: cathedral },
-  { id: 5, src: charango },
-  { id: 6, src: charango },
-  { id: 7, src: guava },
-  { id: 8, src: guava },
-  { id: 9, src: lucuma },
-  { id: 10, src: lucuma },
-  { id: 11, src: penguin },
-  { id: 12, src: penguin },
-  { id: 13, src: rupicola },
-  { id: 14, src: rupicola },
+  { id: 1, src: moray, found: false },
+  { id: 2, src: moray, found: false },
+  { id: 3, src: cathedral, found: false },
+  { id: 4, src: cathedral, found: false },
+  { id: 5, src: charango, found: false },
+  { id: 6, src: charango, found: false },
+  { id: 7, src: guava, found: false },
+  { id: 8, src: guava, found: false },
+  { id: 9, src: lucuma, found: false },
+  { id: 10, src: lucuma, found: false },
+  { id: 11, src: penguin, found: false },
+  { id: 12, src: penguin, found: false },
+  { id: 13, src: rupicola, found: false },
+  { id: 14, src: rupicola, found: false },
 ];
 
 function App() {
   const [cards, setCards]  = useState(shuffle(initialState));
+
+  const setFlipping = (cardId) => {
+    const newCards = cards.map(card => card.id === cardId ? { ...card, flipping: true } : card )
+    setCards(newCards);
+  }
+
+  useEffect(() => {
+    const flippedCards = cards.filter(card => card.flipping); 
+    const twoFlipped = flippedCards.length === 2; 
+    if (twoFlipped) {
+      const found = flippedCards[0].src === flippedCards[1].src;
+      const newCards = cards.map(card => card.flipping 
+        ? { id: card.id, src: card.src, found } 
+        : card);
+      setCards(newCards);
+    }
+  }, [cards]);
 
   return (
     <div className="App">
@@ -59,7 +76,7 @@ function App() {
         <div className="card-container">
           {
             cards.map((card, index) => {
-              return <Card card={card} key={index} />;
+              return <Card card={card} onclick={setFlipping} key={index} />;
             })
           }
         </div>

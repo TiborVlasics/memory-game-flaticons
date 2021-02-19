@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function Card(props) {
+function Card({card, onclick}) {
   const [className, setClassName] = useState('')
+
+  useEffect(() => {
+    if ((!card.flipping && !card.found) && className === 'flipped') {
+      setTimeout(() => {
+        setClassName('');
+      }, 1000);
+    }
+  }, [card])
 
   return (
     <div className={`flip ${className}`} 
-         onClick={() => className === '' ? setClassName('flipped') : setClassName('')}
+         onClick={() => {
+           if(className === '') 
+            setClassName('flipped');
+            onclick(card.id)
+          }
+        }
           >
       <div className="front">
         <h2>Choose 2 cards</h2>
       </div>
       <div className="back">
-       <img src={props.card.src} alt={props.card.src} />
+       <img src={card.src} alt={card.src} />
       </div>
     </div>
   )
