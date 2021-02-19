@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Card({card, onclick}) {
+function Card({ card, onclick }) {
   const [className, setClassName] = useState('')
 
   useEffect(() => {
@@ -9,7 +9,7 @@ function Card({card, onclick}) {
         setClassName('');
       }, 1000);
     }
-  }, [card])
+  }, [card, className])
 
   return (
     <div className={`flip ${className}`} 
@@ -18,10 +18,9 @@ function Card({card, onclick}) {
             setClassName('flipped');
             onclick(card.id)
           }
-        }
-          >
+        }>
       <div className="front">
-        <h2>Choose 2 cards</h2>
+        <h2>Click</h2>
       </div>
       <div className="back">
        <img src={card.src} alt={card.src} />
