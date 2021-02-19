@@ -50,16 +50,16 @@ img {
   opacity: 0;
   top: 0px;
   left: 0px;
-  width: 100px;
+  /* width: 100px; */
   height: 100px;
   transform: rotateY(-180deg);
 }
 
-.flip:hover>.front {
+.flip.flipped>.front {
   transform: rotateY(180deg);
 }
 
-.flip:hover>.back {
+.flip.flipped>.back {
   opacity: 1;
   transform: rotateY(0deg);
 }
@@ -81,7 +81,7 @@ img {
   display: inline-block;
   margin-right: 2px;
   margin-bottom: 1em;
-  width: 100px;
+  /* width: 100px; */
 }
 
 .flip>.front {

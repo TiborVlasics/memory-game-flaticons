@@ -1,6 +1,12 @@
+import React, { useState } from 'react';
+
 function Card(props) {
+  const [className, setClassName] = useState('')
+
   return (
-    <div className="flip">
+    <div className={`flip ${className}`} 
+         onClick={() => className === '' ? setClassName('flipped') : setClassName('')}
+          >
       <div className="front">
         <h2>Choose 2 cards</h2>
       </div>
