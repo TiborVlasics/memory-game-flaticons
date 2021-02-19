@@ -7,10 +7,7 @@ import penguin from './assets/penguin.svg'
 import rupicola from './assets/rupicola.svg'
 import Card from './Card'
 import './App.css';
-
-function duplicate(array) {
-  return array.concat(array);
-}
+import React, { useState } from 'react';
 
 /**
  * 
@@ -36,23 +33,32 @@ function shuffle(array) {
   return array;
 }
 
+const initialState = [
+  { id: 1, src: moray },
+  { id: 2, src: moray },
+  { id: 3, src: cathedral },
+  { id: 4, src: cathedral },
+  { id: 5, src: charango },
+  { id: 6, src: charango },
+  { id: 7, src: guava },
+  { id: 8, src: guava },
+  { id: 9, src: lucuma },
+  { id: 10, src: lucuma },
+  { id: 11, src: penguin },
+  { id: 12, src: penguin },
+  { id: 13, src: rupicola },
+  { id: 14, src: rupicola },
+];
+
 function App() {
-  const cards = [
-    { src: moray },
-    { src: cathedral },
-    { src: charango },
-    { src: guava },
-    { src: lucuma },
-    { src: penguin },
-    { src: rupicola },
-  ];
+  const [cards, setCards]  = useState(shuffle(initialState));
 
   return (
     <div className="App">
       <div className="cards-wrapper">
         <div className="card-container">
           {
-            shuffle(duplicate(cards)).map((card, index) => {
+            cards.map((card, index) => {
               return <Card card={card} key={index} />;
             })
           }
