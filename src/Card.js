@@ -14,9 +14,10 @@ function Card({ card, onclick }) {
   return (
     <div className={`flip ${className}`} 
          onClick={() => {
-           if(className === '') 
-            setClassName('flipped');
-            onclick(card.id)
+           if(className === '') {
+             setClassName('flipped');
+             onclick(card.id)
+           }
           }
         }>
       <div className="front">
