@@ -12,6 +12,26 @@ code {
     monospace;
 }
 
+.new-game-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.new-game-form__header {
+  text-align: center;
+}
+
+.new-game-form__option-holder {
+  display: flex;
+  justify-content: center;
+}
+
+.new-game-form__button-holder {
+  display: flex;
+  justify-content: center;
+}
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
