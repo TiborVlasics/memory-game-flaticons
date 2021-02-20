@@ -14,16 +14,12 @@ code {
 
 .card-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 24px;
-  width: 50%;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .cards-wrapper {
   display: flex;
-  width: 50%;
   justify-content: center;
-  margin: 24px;
 }
 
 img {
@@ -39,10 +35,12 @@ img {
   transition-timing-function: cubic-bezier(.175, .885, .32, 1.275);
   transition-duration: .5s;
   transition-property: transform, opacity;
+  width: 200px;
 }
 
 .flip>.front {
   transform: rotateY(0deg);
+  width: 100px;
 }
 
 .flip>.back {
@@ -50,8 +48,6 @@ img {
   opacity: 0;
   top: 0px;
   left: 0px;
-  /* width: 100px; */
-  height: 100px;
   transform: rotateY(-180deg);
 }
 
@@ -80,14 +76,12 @@ img {
   position: relative;
   display: inline-block;
   margin-right: 2px;
-  margin-bottom: 1em;
-  /* width: 100px; */
+  margin-bottom: 2px;
 }
 
 .flip>.front {
   display: block;
   color: white;
-  width: inherit;
   background-size: cover!important;
   background-position: center!important;
   height: 100px;
