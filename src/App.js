@@ -1,10 +1,12 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import GameContainer from './GameContainer'
 import NewGameForm from './NewGameForm';
 
 function App() {
+  const [boardSize, setBoardSize] = useState(4)
+
   return (
     <Router>
       <div>
@@ -13,10 +15,10 @@ function App() {
             <Redirect to="/home" />
           </Route>
           <Route path="/home">
-            <NewGameForm />
+            <NewGameForm setBoardSize={setBoardSize} />
           </Route>
           <Route path="/game">
-            <GameContainer />
+            <GameContainer boardSize={boardSize} />
           </Route>
         </Switch>
       </div>

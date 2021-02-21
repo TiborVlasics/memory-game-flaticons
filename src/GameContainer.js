@@ -50,8 +50,8 @@ const initialState = [
   { id: 14, src: rupicola, found: false },
 ];
 
-function GameContainer() {
-  const [cards, setCards]  = useState(shuffle(initialState));
+function GameContainer(props) {
+  const [cards, setCards]  = useState(shuffle(initialState.slice(0, props.boardSize)));
 
   const setFlipping = (cardId) => {
     const newCards = cards.map(card => card.id === cardId ? { ...card, flipping: true } : card )
