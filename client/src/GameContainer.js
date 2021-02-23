@@ -9,6 +9,7 @@ import Card from './Card'
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
+
 /**
  * 
  * @param {*} array 
@@ -67,6 +68,9 @@ function GameContainer(props) {
         ? { id: card.id, src: card.src, found } 
         : card);
       setCards(newCards);
+    }
+    const gameWon = !cards.some(card => card.found === false);
+    if(gameWon) {
     }
   }, [cards]);
 
